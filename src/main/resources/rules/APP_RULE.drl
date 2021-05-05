@@ -1,0 +1,15 @@
+rule "For CREATE state of applicant"
+when
+  applicantInst:Applicant(state == State.CREATE);
+then
+  System.out.println("Running action:" + drools.getRule().getName());
+  System.out.println("applicantInst:" + applicantInst);
+  boolean value =  processDocumentService.processDocument(applicantInst);
+  System.out.println("Value:" + value);
+  if(value == true) {
+    applicantInst.setState(State.PROCESSING);
+  } else {
+    applicantInst.setState(State.REJECTED);
+  }
+  System.out.println("End action:" + drools.getRule().getName());
+end

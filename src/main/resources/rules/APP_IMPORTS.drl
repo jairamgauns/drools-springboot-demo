@@ -1,0 +1,4 @@
+import com.example.demopep.model.Applicant;
+import com.example.demopep.enums.*;
+
+global com.example.demopep.services.impl.ProcessDocumentService processDocumentService;
